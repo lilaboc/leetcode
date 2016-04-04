@@ -1,21 +1,21 @@
 # https://leetcode.com/problems/implement-trie-prefix-tree/
 class TrieNode(object):
-    def __init__(self, end = False):
+    def __init__(self):
         """
         Initialize your data structure here.
         """
         self.letters = {}
-        self.end = end
+        self.end = False
         
-    def insert(self, letter, end = False):
-        node = self.letters.setdefault(letter, TrieNode(end))
-        if not node.end and end:
-            node.end = end
+    def insert(self, letter):
+        node = self.letters.setdefault(letter, TrieNode())
         return node
     
     def __contains__(self, item):
         return item in self.letters
 
+    def get(self, value):
+        return self.letters.get(value)
 
 
 class Trie(object):
@@ -31,12 +31,10 @@ class Trie(object):
         """
         current = self.root
         for index, value in enumerate(word):
-            if index == len(word) - 1:
-                current = current.insert(value, True)
-            else:
-                current = current.insert(value)
+            current = current.insert(value)
+        current.end = True
 
-    def search(self, word):
+    def search(self, word, care_end = True):
         """
         Returns if the word is in the trie.
         :type word: str
@@ -46,10 +44,8 @@ class Trie(object):
         for index, value in enumerate(word):
             if value not in current:
                 return False
-            current = current.letters.get(value)
-            if index == len(word) - 1:
-                return current.end
-        return False
+            current = current.get(value)
+        return current.end if care_end else True
         
 
     def startsWith(self, prefix):
@@ -59,12 +55,7 @@ class Trie(object):
         :type prefix: str
         :rtype: bool
         """
-        current = self.root
-        for index, value in enumerate(prefix):
-            if value not in current:
-                return False
-            current = current.letters.get(value)
-        return True
+        return self.search(prefix, False)
         
 
 # Your Trie object will be instantiated and called as such:
