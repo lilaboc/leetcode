@@ -30,7 +30,7 @@ class Trie(object):
         :rtype: void
         """
         current = self.root
-        for index, value in enumerate(word):
+        for  value in word:
             current = current.insert(value)
         current.end = True
 
@@ -41,7 +41,7 @@ class Trie(object):
         :rtype: bool
         """
         current = self.root
-        for index, value in enumerate(word):
+        for value in word:
             if value not in current:
                 return False
             current = current.get(value)
