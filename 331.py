@@ -12,10 +12,8 @@ class Solution(object):
             gap = 0
             for index, value in enumerate(nodes):
                 if value == '#':
-                    if index == 0 and len(nodes) == 1:
-                        return True
-                    elif index == 0 and len(nodes) != 1:
-                        return False
+                    if index == 0:
+                        gap = 0
                     else:
                         gap -= 1
                 else:
@@ -23,9 +21,7 @@ class Solution(object):
                         gap += 2
                     else:
                         gap += 1
-                if gap == 0 and index != len(nodes) - 1:
-                    return False
-                if gap < 0:
+                if gap <= 0 and index != len(nodes) - 1:
                     return False
             return gap == 0
 
