@@ -6,14 +6,12 @@
 #         self.left = None
 #         self.right = None
 
-from Queue import Queue
 class Solution(object):
     def preorderTraversal(self, root):
         """
         :type root: TreeNode
         :rtype: List[int]
         """
-        q = Queue()
         if not root:
             return []
         current = root
