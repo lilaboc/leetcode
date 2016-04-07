@@ -1,4 +1,4 @@
-# https://leetcode.com/problems/populating-next-right-pointers-in-each-node/
+# https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/
 # Definition for binary tree with next pointer.
 # class TreeLinkNode(object):
 #     def __init__(self, x):
