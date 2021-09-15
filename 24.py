@@ -18,7 +18,6 @@ class ListNode:
 
 class Solution:
     def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        pairs = []
         now = head
         count = 0
         odd = []
