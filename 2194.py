@@ -6,8 +6,9 @@ from typing import List
 class Solution:
     def cellsInRange(self, s: str) -> List[str]:
         start, end = s.split(':')
+        upper = string.ascii_uppercase
         r = []
-        for l in string.ascii_uppercase[string.ascii_uppercase.find(start[0]): string.ascii_uppercase.find(end[0]) + 1]:
+        for l in upper[upper.find(start[0]): upper.find(end[0]) + 1]:
             for n in range(int(start[1]), int(end[1]) + 1):
                 r.append(l + str(n))
         return r
